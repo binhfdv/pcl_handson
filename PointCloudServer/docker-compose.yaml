@@ -1,0 +1,44 @@
+version: "3.3"
+services:
+  redis:
+    image: 'bitnami/redis:latest'
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    ports:
+      - "6379:6379"
+    networks:
+      - tc
+  pointcloudserver:
+    build: .
+    volumes:
+      - "./media:/app/media"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - redis
+    networks:
+      - tc
+    cap_add:
+      - NET_ADMIN
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+
+
+  watcher:
+    build:
+      context: .
+      dockerfile: Dockerfile.watcher
+    volumes:
+      - "./media:/app/media"   # Watcher and server share the same media folder
+    depends_on:
+      - redis
+    networks:
+      - tc
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+
+
+networks:
+  tc:

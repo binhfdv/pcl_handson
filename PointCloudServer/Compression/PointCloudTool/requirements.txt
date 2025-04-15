@@ -1,0 +1,16 @@
+DracoPy
+numpy
+open3d
+pandas
+plyfile
+# File system monitoring
+watchdog
+
+
+# Redis for communication between compression and streaming
+redis
+
+scipy
+
+# YAML for configuration management
+pyyaml

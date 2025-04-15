@@ -1,0 +1,8 @@
+fastapi
+hypercorn
+matplotlib
+numpy
+pyyaml
+redis
+scipy
+watchdog

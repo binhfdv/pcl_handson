@@ -1,0 +1,40 @@
+# Base image
+FROM python:3.9-bullseye
+
+# Set working directory
+WORKDIR /app
+
+# Copy Compression folder
+COPY Compression /app/Compression
+
+# Install required system packages
+RUN apt-get update && apt-get install -y wget unzip cmake make g++ git libgl1-mesa-glx redis-tools
+
+# Upgrade pip and install Python dependencies
+RUN pip install --upgrade pip
+
+
+# Install pointcloudtool in editable mode
+WORKDIR /app/Compression/PointCloudTool
+RUN pip install .
+
+# Install Draco encoder & decoder
+WORKDIR /app/Compression
+RUN git clone https://github.com/google/draco.git && \
+    cd draco && mkdir build && cd build && \
+    cmake .. && make && \
+    cp draco_encoder draco_decoder /usr/local/bin/ && \
+    chmod +x /usr/local/bin/draco_encoder /usr/local/bin/draco_decoder
+
+# Set the correct path for Draco
+ENV PATH="/usr/local/bin:${PATH}"
+
+# Verify Draco installation
+RUN ls -lah /usr/local/bin/draco_encoder /usr/local/bin/draco_decoder && \
+    which draco_encoder && which draco_decoder
+
+# Make sure scripts are executable
+RUN chmod +x /app/Compression/prepare_dash_sequence.sh
+
+# Start the watcher
+CMD ["python", "/app/Compression/PointCloudTool/watcher.py"]
