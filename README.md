@@ -50,7 +50,7 @@ vagrant@comnetsemu:~/pcl_handson/draco/build$ export PATH=$PATH:/home/vagrant/pc
 
 ## 4. Build point cloud visualizer
 ```
-vagrant@comnetsemu:~/pcl_handson/pcl_viewer/build$ sudo apt update && sudo apt install -y libpcl-dev
+vagrant@comnetsemu:~/pcl_handson/draco/build$ sudo apt update && sudo apt install -y libpcl-dev
 vagrant@comnetsemu:~/pcl_handson/draco/build$ cd ~/pcl_handson/
 vagrant@comnetsemu:~/pcl_handson$ cd pcl_viewer/
 vagrant@comnetsemu:~/pcl_handson/pcl_viewer$ mkdir build && cd build
