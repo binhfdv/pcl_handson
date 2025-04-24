@@ -1,0 +1,44 @@
+version: "3.3"
+services:
+  redis:
+    image: 'bitnami/redis:latest'
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    ports:
+      - "6379:6379"
+    networks:
+      - tc
+
+  watcher:
+    image: 'students-watcher:latest' 
+    volumes:
+      - "./media:/app/media"   # Watcher and server share the same media folder
+    depends_on:
+      - redis
+    networks:
+      - tc
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+
+  pointcloudserver:
+    image: 'students-pointcloudserver:latest'
+    volumes:
+      - "./media:/app/media"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - redis
+    networks:
+      - tc
+    cap_add:
+      - NET_ADMIN
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - BASE_URL=http://0.0.0.0:8080/media/foo/
+    command: ["python", "-m", "pointcloudserver.app", "dash", 
+              "--config", "configuration.yaml", "--host", "0.0.0.0", "--port", "8080", "--mediaDir", "media/"]
+              
+networks:
+  tc:

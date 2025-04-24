@@ -1,0 +1,7 @@
+*.log
+*.out
+build/
+draco/
+out/
+bin/
+tmp/
