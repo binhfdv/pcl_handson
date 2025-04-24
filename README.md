@@ -58,8 +58,9 @@ vagrant@comnetsemu:~/pcl_handson/pcl_viewer/build$ cmake ..
 vagrant@comnetsemu:~/pcl_handson/pcl_viewer/build$ make
 vagrant@comnetsemu:~/pcl_handson/pcl_viewer/build$ export PATH=$PATH:/home/vagrant/pcl_handson/pcl_viewer/build
 ```
-### Notes: after built, run `export PATH=$PATH:/home/vagrant/pcl_handson/pcl_viewer/build` whenever you find an error `pcl_viewer: command not found`
-
+### Notes: after built
+* run `export PATH=$PATH:/home/vagrant/pcl_handson/pcl_viewer/build` whenever you find an error `pcl_viewer: command not found`
+* run `export DISPLAY=$(ip route show default | awk '{print $3}'):0.0` whenever you see `ERROR: In /build/vtk7-yd0MKW/vtk7-7.1.1+dfsg2/Rendering/OpenGL2/vtkXOpenGLRenderWindow.cxx, line 1497 vtkXOpenGLRenderWindow (0x557d396081c0): bad X server connection. DISPLAY=Aborted (core dumped)`
 
 
 
