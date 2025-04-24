@@ -21,9 +21,11 @@ vagrant@comnetsemu:~$ xeyes
 
 ## Preparation
 
-## 1. Clone this repo to your comnetsemu VM
+## 1. Clone this repo to your comnetsemu VM and pull images
 ```
 vagrant@comnetsemu:~$ git clone https://github.com/binhfdv/pcl_handson_backup.git ~/pcl_handson
+vagrant@comnetsemu:~$ docker pull ddocker122/students-watcher
+vagrant@comnetsemu:~$ docker pull ddocker122/students-pointcloudserver
 ```
 
 ## 2. Install docker compose:
