@@ -10,7 +10,7 @@ services:
       - tc
 
   watcher:
-    image: 'students-watcher:latest' 
+    image: 'ddocker122/students-watcher:latest' 
     volumes:
       - "./media:/app/media"   # Watcher and server share the same media folder
     depends_on:
@@ -22,7 +22,7 @@ services:
       - REDIS_PORT=6379
 
   pointcloudserver:
-    image: 'students-pointcloudserver:latest'
+    image: 'ddocker122/students-pointcloudserver:latest'
     volumes:
       - "./media:/app/media"
     ports:
