@@ -60,7 +60,7 @@ int main(int argc, char** argv) {
     std::unordered_set<std::string> seen_files;
 
     pcl::visualization::PCLVisualizer::Ptr viewer(new pcl::visualization::PCLVisualizer("3D Viewer"));
-    viewer->setBackgroundColor(0, 0, 0);
+    viewer->setBackgroundColor(1.0, 1.0, 1.0);
 
     std::string last_loaded;
 
