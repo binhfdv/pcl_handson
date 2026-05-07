@@ -1,12 +1,14 @@
 # Handson: Docker Compose with a Real-World Example - Point Cloud Transmission Server
 
-## In this exercise, we'll need computer graphics for point cloud visualization. For the Comnetsemu VM can use your laptop graphics, you need to install Xming X Server in your laptop:
+## In this exercise, we'll need computer graphics for point cloud visualization. For the Comnetsemu VM to use your laptop graphics, you need to install Xming X Server on your laptop:
 
 ### Download and install Xming X Server for Windows: https://sourceforge.net/projects/xming/
 
+### Note that Xming X Server is only for Windows users. If you have Ubuntu laptop, you can start with step 0.
+
 ## After installed Xming X Server:
 * Restart your laptop if needed
-* Open Window Power shell to stop Xming: `Stop-Process -Name Xming -Force`
+* Open Windows PowerShell to stop Xming: `Stop-Process -Name Xming -Force`
 * Open XLaunch application to start Xming with options: `Multiple windows` -> `Start no client` -> `Clipboard` + `No Access Control`
 
 
